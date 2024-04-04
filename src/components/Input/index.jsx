@@ -1,11 +1,11 @@
-function Input({ type, titre, value, setValue }) {
+function Input({ type, name, label, value, setValue }) {
     return (
         <div>
-            <label htmlFor={titre}>{titre} : </label>
+            <label htmlFor={name}>{label} : </label>
             <input
                 type={type}
-                name={titre}
-                id={titre.toLowerCase()}
+                name={name}
+                id={name.toLowerCase()}
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
             />

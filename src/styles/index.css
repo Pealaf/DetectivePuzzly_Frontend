@@ -1,4 +1,36 @@
 body{
     background-color: rgb(244 206 197);
+    background-image:   url('../assets/fond.png');
+
+    /*background-origin: border-box;*/
+    background-repeat: repeat;
+    /*background-size: cover;*/
+    background-size: 120%;
+    background-position: center;
     margin:auto;
+
+    height: 100vh;
+}
+
+div{
+    /*width: 100%;*/
+}
+
+#root{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.divConnexion{
+    background-color: rgb(184 108 172);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    border-radius: 30%;
+    text-align:center;
 }

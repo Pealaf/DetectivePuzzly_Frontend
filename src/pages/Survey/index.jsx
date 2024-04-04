@@ -14,12 +14,16 @@ function Survey() {
 
     return (
         <div>
-            {CheckAuthentification()}
-            <h1>Questionnaire 🧮</h1>
-            <Link to="client">Questionnaire Client</Link>
-            <Link to="freelance">Questionnaire Freelance</Link>
-            <Outlet />
-            <button onClick={deconnexion}>Déconnexion</button>
+            <div>
+                {CheckAuthentification()}
+            </div>
+            <div>
+                <h1>Questionnaire 🧮</h1>
+                <Link to="client">Questionnaire Client</Link>
+                <Link to="freelance">Questionnaire Freelance</Link>
+                <Outlet />
+                <button onClick={deconnexion}>Déconnexion</button>
+            </div>
         </div>
     );
 }

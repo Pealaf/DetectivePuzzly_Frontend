@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Input from "../../components/Input";
-import { useNavigate } from 'react-router-dom';
+import Button from "../../components/Button";
+import {Link, useNavigate} from 'react-router-dom';
 
 function Profil() {
     const [login, setLogin] = useState('');
@@ -22,25 +23,46 @@ function Profil() {
             },
             body: JSON.stringify(donnees),
         })
-            .then((response) => response.json())
+            .then(response => {
+                // Vérifie si la requête a réussi
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        document.getElementById("labelIdentifiantsIncorrects").style.display = "block";
+                    } else {
+                        // Gérer d'autres erreurs HTTP
+                        console.error('Erreur HTTP, statut : ' + response.status);
+                        throw new Error('Erreur HTTP');
+                    }
+                }
+                // Parse la réponse JSON
+                return response.json();
+            })
             .then((jsonResponse) => {
                 if(jsonResponse.token) {
                     localStorage.setItem('token', jsonResponse.token);
+                    localStorage.setItem('login', login);
                     navigate('/survey');
                 } else {
-                    console.log("Erreur d'authentification");
+                    document.getElementById("labelIdentifiantsIncorrects").style.display = "block";
                 }
                 return jsonResponse;
+            }).catch(error => {
+                // Gère les erreurs
+                console.error('Une erreur est survenue :', error);
             });
     };
 
     return (
-        <div>
-            <h1>Création du profil</h1>
+        <div className="divConnexion">
+            <h1>Connexion</h1>
             <div>
-                <Input type="text" titre="Login" value={login} setValue={setLogin} />
-                <Input type="password" titre="password" value={password} setValue={setPassword} />
-                <button onClick={connexion}>Enregistrer</button>
+                <label id="labelIdentifiantsIncorrects" hidden style={{color:'red', fontWeight:"bold"}}>Identifiants incorrects !</label>
+                <Input type="text" name="login" label="Login" value={login} setValue={setLogin} />
+                <Input type="password" name="password" label="Mot de passe" value={password} setValue={setPassword} />
+                <br/>
+                <Button intitule="Enregistrer" onClick={connexion} />
+                <br/>
+                <Link to="/nouveauProfil">Nouveau compte</Link>
             </div>
         </div>
     );
