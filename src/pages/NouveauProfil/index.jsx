@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import {Link, useNavigate} from 'react-router-dom';
+import checkAuthentification from "../Profil/checkAuthentification";
 
 function NouveauProfil() {
     const [login, setLogin] = useState('');
@@ -66,6 +67,7 @@ function NouveauProfil() {
 
     return (
         <div className="divConnexion">
+            {checkAuthentification()}
             <h1>Création du profil</h1>
             <div>
                 <label id="labelErreur" hidden style={{color:'red', fontWeight:"bold"}}></label>

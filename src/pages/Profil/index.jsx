@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import {Link, useNavigate} from 'react-router-dom';
+import CheckAuthentification from "./checkAuthentification";
 
 function Profil() {
     const [login, setLogin] = useState('');
@@ -53,7 +54,9 @@ function Profil() {
     };
 
     return (
+
         <div className="divConnexion">
+            {CheckAuthentification()}
             <h1>Connexion</h1>
             <div>
                 <label id="labelIdentifiantsIncorrects" hidden style={{color:'red', fontWeight:"bold"}}>Identifiants incorrects !</label>
