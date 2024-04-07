@@ -2,13 +2,13 @@ import CheckAuthentification from "../Profil/checkAuthentification";
 
 function App() {
   return (
-    <div className="App divPrincipale">
-        {CheckAuthentification()}
-        <header className="App-header">
-            <p>
-              Bonjour moi
-            </p>
+    <div className="divPrincipale">
+        <header>
+            {CheckAuthentification()}
         </header>
+        <p>
+            Bonjour moi
+        </p>
     </div>
   );
 }

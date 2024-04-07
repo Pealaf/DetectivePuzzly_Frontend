@@ -2,6 +2,7 @@
     background-color: rgb(184 108 172);/*#a383ad/*c2918d*/
     display: flex;
     padding: 10px;
+    justify-content: space-between;
 }
 
 .logo{

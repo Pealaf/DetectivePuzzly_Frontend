@@ -13,10 +13,10 @@ function Survey() {
     };
 
     return (
-        <div>
-            <div>
+        <div className="divPrincipale">
+            <header>
                 {CheckAuthentification()}
-            </div>
+            </header>
             <div>
                 <h1>Questionnaire 🧮</h1>
                 <Link to="client">Questionnaire Client</Link>

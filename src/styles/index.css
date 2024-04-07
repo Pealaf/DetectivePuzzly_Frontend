@@ -12,8 +12,8 @@ body{
     height: 100vh;
 }
 
-div{
-    /*width: 100%;*/
+.divPrincipale{
+    width: 100%;
 }
 
 #root{
