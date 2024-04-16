@@ -24,3 +24,18 @@
     display: grid;
     place-items: center; 
 }
+
+.headerBouton{
+    background: none;
+    border: none;
+}
+
+.headerBouton i{
+    width: 100%;
+    color: white;
+    font-size: 20px;
+}
+
+.headerBouton:hover {
+    cursor: pointer;
+}

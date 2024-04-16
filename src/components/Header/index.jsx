@@ -19,7 +19,7 @@ function Header() {
             <Link to="/home" className='lien'>Accueil</Link>
             <Link to="/profil" className='lien'>Mon profil</Link>
             <Link to="/survey" className='lien'>test</Link>
-            <button onClick={deconnexion}><i className="fa-solid fa-right-from-bracket"></i></button>
+            <button onClick={deconnexion} className="headerBouton"><i className="fa-solid fa-right-from-bracket"></i></button>
 
         </nav>
     );
