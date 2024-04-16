@@ -96,18 +96,19 @@ function Profil() {
     };
 
     return (
-
-        <div className="divConnexion">
-            {CheckAuthentification()}
-            <h1>Connexion</h1>
-            <div>
-                <label id="labelIdentifiantsIncorrects" hidden style={{color:'red', fontWeight:"bold"}}>Identifiants incorrects !</label>
-                <Input type="text" name="login" label="Login" value={login} setValue={setLogin} />
-                <Input type="password" name="password" label="Mot de passe" value={password} setValue={setPassword} />
-                <br/>
-                <Button intitule="Enregistrer" onClick={connexion} />
-                <br/>
-                <Link to="/nouveauProfil">Nouveau compte</Link>
+        <div className="divContent">
+            <div className="divConnexion">
+                {CheckAuthentification()}
+                <h1>Connexion</h1>
+                <div>
+                    <label id="labelIdentifiantsIncorrects" hidden style={{color:'red', fontWeight:"bold"}}>Identifiants incorrects !</label>
+                    <Input type="text" name="login" label="Login" value={login} setValue={setLogin} />
+                    <Input type="password" name="password" label="Mot de passe" value={password} setValue={setPassword} />
+                    <br/>
+                    <Button intitule="Enregistrer" onClick={connexion} />
+                    <br/>
+                    <Link to="/nouveauProfil">Nouveau compte</Link>
+                </div>
             </div>
         </div>
     );

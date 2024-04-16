@@ -66,18 +66,20 @@ function NouveauProfil() {
     }
 
     return (
-        <div className="divConnexion">
-            {checkAuthentification()}
-            <h1>Création du profil</h1>
-            <div>
-                <label id="labelErreur" hidden style={{color:'red', fontWeight:"bold"}}></label>
-                <Input type="text" name="login" label="Login" value={login} setValue={setLogin} />
-                <Input type="password" name="password" label="Mot de passe" value={password} setValue={setPassword} />
-                <Input type="password" name="confirmationPassword" label={"Confirmation du mot de passe"} value={confirmationPassword} setValue={setConfirmationPassword} />
-                <br/>
-                <Button intitule="Créer mon compte" onClick={creationCompte} />
-                <br/>
-                <Link to="/profil">Compte déjà existant</Link>
+        <div className="divContent">
+            <div className="divConnexion">
+                {checkAuthentification()}
+                <h1>Création du profil</h1>
+                <div>
+                    <label id="labelErreur" hidden style={{color:'red', fontWeight:"bold"}}></label>
+                    <Input type="text" name="login" label="Login" value={login} setValue={setLogin} />
+                    <Input type="password" name="password" label="Mot de passe" value={password} setValue={setPassword} />
+                    <Input type="password" name="confirmationPassword" label={"Confirmation du mot de passe"} value={confirmationPassword} setValue={setConfirmationPassword} />
+                    <br/>
+                    <Button intitule="Créer mon compte" onClick={creationCompte} />
+                    <br/>
+                    <Link to="/profil">Compte déjà existant</Link>
+                </div>
             </div>
         </div>
     );

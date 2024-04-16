@@ -14,11 +14,18 @@ body{
 
 .divPrincipale{
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 #root{
+    height: 100%;
+}
+
+.divContent{
+    height:100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }

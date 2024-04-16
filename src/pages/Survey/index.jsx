@@ -17,12 +17,14 @@ function Survey() {
             <header>
                 {CheckAuthentification()}
             </header>
-            <div>
-                <h1>Questionnaire 🧮</h1>
-                <Link to="client">Questionnaire Client</Link>
-                <Link to="freelance">Questionnaire Freelance</Link>
-                <Outlet />
-                <button onClick={deconnexion}>Déconnexion</button>
+            <div className="divContent">
+                <div>
+                    <h1>Questionnaire 🧮</h1>
+                    <Link to="client">Questionnaire Client</Link>
+                    <Link to="freelance">Questionnaire Freelance</Link>
+                    <Outlet />
+                    <button onClick={deconnexion}>Déconnexion</button>
+                </div>
             </div>
         </div>
     );

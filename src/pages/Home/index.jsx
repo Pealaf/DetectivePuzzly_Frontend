@@ -9,9 +9,11 @@ function App() {
             <header>
                 {CheckAuthentification()}
             </header>
-            <p>
-                Bonjour {currentUserLogin}
-            </p>
+            <div className="divContent">
+                <p>
+                    Bonjour {currentUserLogin}
+                </p>
+            </div>
         </div>
     );
 }
