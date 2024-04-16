@@ -7,6 +7,7 @@ import NouveauProfil from './pages/NouveauProfil/';
 import Survey from './pages/Survey/';
 import ClientForm from './components/ClientForm';
 import ApiTest from './components/ApiTest';
+import Enigme from './pages/Enigme/';
 import './styles/index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -21,6 +22,7 @@ root.render(
             <Route path="client" element={<ClientForm />} />
             <Route path="freelance" element={<ApiTest />} />
           </Route>
+          <Route path="/enigme" element={<Enigme />} />
           <Route path="/*" element={<Home />}/>
         </Routes>
       </Router>

@@ -11,6 +11,7 @@ function Header() {
         navigate('/survey');
     };
 
+    // <Link to="/survey" className='lien'>test</Link>
     return (
         <nav className='header'>
             <Link to="/home" className='lien-logo'>
@@ -18,7 +19,7 @@ function Header() {
             </Link>
             <Link to="/home" className='lien'>Accueil</Link>
             <Link to="/profil" className='lien'>Mon profil</Link>
-            <Link to="/survey" className='lien'>test</Link>
+            <Link to="/enigme" className='lien'>Enigme</Link>
             <button onClick={deconnexion} className="headerBouton"><i className="fa-solid fa-right-from-bracket"></i></button>
 
         </nav>
