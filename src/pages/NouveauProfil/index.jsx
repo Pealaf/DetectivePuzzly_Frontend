@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import {Link, useNavigate} from 'react-router-dom';
-import checkAuthentification from "../Profil/checkAuthentification";
+import {Link, Navigate, useNavigate} from 'react-router-dom';
+import {checkAuthentification} from "../../utils/utilsFunctions";
 
 function NouveauProfil() {
+
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [confirmationPassword, setConfirmationPassword] = useState('');
@@ -12,14 +13,14 @@ function NouveauProfil() {
 
     const creationCompte = async () => {
         let messageErreur = document.getElementById("labelErreur");
-        if(password.length >= 8) {
-            if(password === confirmationPassword && password) {
+        if (password.length >= 8) {
+            if (password === confirmationPassword && password) {
                 let loginExistant = await checkLogin(login);
-                if(!loginExistant) {
+                if (!loginExistant) {
                     let donnees = {
-                        "login" : login,
-                        "roles" : {"roles":"user"},
-                        "password" : password
+                        "login": login,
+                        "roles": {"roles": "user"},
+                        "password": password
                     };
 
                     await fetch("http://localhost:8000/api/users", {
@@ -43,7 +44,7 @@ function NouveauProfil() {
                         // Parse la réponse JSON
                         return response.json();
                     }).then((jsonResponse) => {
-                        if(jsonResponse.id) {
+                        if (jsonResponse.id) {
                             window.alert("Votre compte a bien été créé !");
                             navigate('/profil');
                         }
@@ -65,24 +66,30 @@ function NouveauProfil() {
         }
     }
 
-    return (
-        <div className="divContent">
-            <div className="divConnexion">
-                {checkAuthentification()}
-                <h1>Création du profil</h1>
-                <div>
-                    <label id="labelErreur" hidden style={{color:'red', fontWeight:"bold"}}></label>
-                    <Input type="text" name="login" label="Login" value={login} setValue={setLogin} />
-                    <Input type="password" name="password" label="Mot de passe" value={password} setValue={setPassword} />
-                    <Input type="password" name="confirmationPassword" label={"Confirmation du mot de passe"} value={confirmationPassword} setValue={setConfirmationPassword} />
-                    <br/>
-                    <Button intitule="Créer mon compte" onClick={creationCompte} />
-                    <br/>
-                    <Link to="/profil">Compte déjà existant</Link>
+    // Vérification de la connexion
+    if(checkAuthentification()) {
+        return <Navigate to="/home" replace={true} />;
+    } else {
+        return (
+            <div className="divContent">
+                <div className="divConnexion">
+                    <h1>Création du profil</h1>
+                    <div>
+                        <label id="labelErreur" hidden style={{color: 'red', fontWeight: "bold"}}></label>
+                        <Input type="text" name="login" label="Login" value={login} setValue={setLogin}/>
+                        <Input type="password" name="password" label="Mot de passe" value={password}
+                               setValue={setPassword}/>
+                        <Input type="password" name="confirmationPassword" label={"Confirmation du mot de passe"}
+                               value={confirmationPassword} setValue={setConfirmationPassword}/>
+                        <br/>
+                        <Button intitule="Créer mon compte" onClick={creationCompte}/>
+                        <br/>
+                        <Link to="/profil">Compte déjà existant</Link>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 async function checkLogin (login){

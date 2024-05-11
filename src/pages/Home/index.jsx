@@ -1,21 +1,28 @@
-import CheckAuthentification from "../Profil/checkAuthentification";
+import Header from "../../components/Header";
+import {checkAuthentification} from "../../utils/utilsFunctions";
+import {Navigate} from "react-router-dom";
 
-function App() {
+function Home() {
 
-    let currentUserLogin = JSON.parse(localStorage.getItem("currentUser"))["username"];
+    // Vérification de la connexion
+    if(!checkAuthentification()) {
+        return <Navigate to="/profil" replace={true} />;
+    } else {
+        let currentUserLogin = JSON.parse(localStorage.getItem("currentUser"))["username"];
 
-    return (
-        <div className="divPrincipale">
-            <header>
-                {CheckAuthentification()}
-            </header>
-            <div className="divContent">
-                <p>
-                    Bonjour {currentUserLogin}
-                </p>
+        return (
+            <div className="divPrincipale">
+                <header>
+                    <Header/>
+                </header>
+                <div className="divContent">
+                    <p>
+                        Bonjour {currentUserLogin}
+                    </p>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
-export default App;
+export default Home;

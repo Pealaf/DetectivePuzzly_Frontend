@@ -1,19 +1,20 @@
 import React, {useState} from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import {Link, useNavigate} from 'react-router-dom';
-import CheckAuthentification from "./checkAuthentification";
+import {Link, Navigate, useNavigate} from 'react-router-dom';
 import {jwtDecode} from "jwt-decode";
+import {checkAuthentification} from "../../utils/utilsFunctions";
 
 function Profil() {
+
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
     const connexion = async () => {
         let donnees = {
-            "username" : login,
-            "password" : password
+            "username": login,
+            "password": password
         };
 
         await fetch("http://localhost:8000/api/login_check", {
@@ -40,7 +41,7 @@ function Profil() {
                 return response.json();
             })
             .then(async (jsonResponse) => {
-                if(jsonResponse.token) {
+                if (jsonResponse.token) {
                     localStorage.setItem('token', jsonResponse.token);
                     await recupererUser();
                     navigate('/home');
@@ -61,7 +62,7 @@ function Profil() {
         const decodedToken = jwtDecode(token);
 
         // Afficher les données décodées
-        await fetch("http://localhost:8000/api/users/login/"+decodedToken["username"], {
+        await fetch("http://localhost:8000/api/users/login/" + decodedToken["username"], {
             method: "GET",
             mode: "cors",
             headers: {
@@ -83,7 +84,7 @@ function Profil() {
                 return response.json();
             })
             .then((jsonResponse) => {
-                if(jsonResponse) {
+                if (jsonResponse) {
                     localStorage.setItem('currentUser', JSON.stringify(jsonResponse));
                 } else {
 
@@ -95,23 +96,29 @@ function Profil() {
             });
     };
 
-    return (
-        <div className="divContent">
-            <div className="divConnexion">
-                {CheckAuthentification()}
-                <h1>Connexion</h1>
-                <div>
-                    <label id="labelIdentifiantsIncorrects" hidden style={{color:'red', fontWeight:"bold"}}>Identifiants incorrects !</label>
-                    <Input type="text" name="login" label="Login" value={login} setValue={setLogin} />
-                    <Input type="password" name="password" label="Mot de passe" value={password} setValue={setPassword} />
-                    <br/>
-                    <Button intitule="Enregistrer" onClick={connexion} />
-                    <br/>
-                    <Link to="/nouveauProfil">Nouveau compte</Link>
+    // Vérification de la connexion
+    if(checkAuthentification()) {
+        return <Navigate to="/home" replace={true} />;
+    } else {
+        return (
+            <div className="divContent">
+                <div className="divConnexion">
+                    <h1>Connexion</h1>
+                    <div>
+                        <label id="labelIdentifiantsIncorrects" hidden style={{color: 'red', fontWeight: "bold"}}>Identifiants
+                            incorrects !</label>
+                        <Input type="text" name="login" label="Login" value={login} setValue={setLogin}/>
+                        <Input type="password" name="password" label="Mot de passe" value={password}
+                               setValue={setPassword}/>
+                        <br/>
+                        <Button intitule="Enregistrer" onClick={connexion}/>
+                        <br/>
+                        <Link to="/nouveauProfil">Nouveau compte</Link>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default Profil;
