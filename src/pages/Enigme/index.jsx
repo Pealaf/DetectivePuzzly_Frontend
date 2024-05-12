@@ -1,6 +1,6 @@
 import Button from "../../components/Button";
 import {Navigate, useNavigate} from "react-router-dom";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {checkAuthentification} from "../../utils/utilsFunctions";
 import Header from "../../components/Header";
 
@@ -9,6 +9,13 @@ function PageEnigme() {
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
     const [enigme, setEnigme] = useState(null);
+
+    const [buttonStates, setButtonStates] = useState({
+        a: false,
+        b: false,
+        c: false,
+        d: false
+    });
 
     useEffect(() => {
         const genererEnigme = async () => {
@@ -38,15 +45,28 @@ function PageEnigme() {
 
                 const jsonResponse = await response.json();
                 setEnigme(jsonResponse);
+                console.log(jsonResponse);
             } catch (error) {
                 console.error('Une erreur est survenue :', error);
             } finally {
                 setLoading(false); // À la fin de la requête, on arrête le chargement
             }
-        };
+        }
 
         genererEnigme();
     }, [navigate]);
+
+    const repondre = (reponse) => {
+        if(enigme["reponse_"+reponse] === enigme["solution"]) {
+            console.log("Bonne réponse !");
+        } else {
+            document.getElementById("labelMauvaiseReponse").style.display = "block";
+            setButtonStates((prevState) => ({
+                ...prevState,
+                [reponse]: true
+            }));
+        }
+    };
 
     // Vérification de la connexion
     if(!checkAuthentification()) {
@@ -69,13 +89,14 @@ function PageEnigme() {
                                         <h2>{enigme.intitule}</h2>
                                         <div id="divBoutons">
                                             <div className="divLigneBoutons">
-                                                <Button intitule={enigme["reponse_a"]}/>
-                                                <Button intitule={enigme["reponse_b"]}/>
+                                                <Button intitule={enigme["reponse_a"]} onClick={() => repondre('a')} disabled={buttonStates.a}/>
+                                                <Button intitule={enigme["reponse_b"]} onClick={() => repondre('b')} disabled={buttonStates.b}/>
                                             </div>
                                             <div className="divLigneBoutons">
-                                                <Button intitule={enigme["reponse_c"]}/>
-                                                <Button intitule={enigme["reponse_d"]}/>
+                                                <Button intitule={enigme["reponse_c"]} onClick={() => repondre('c')} disabled={buttonStates.c}/>
+                                                <Button intitule={enigme["reponse_d"]} onClick={() => repondre('d')} disabled={buttonStates.d}/>
                                             </div>
+                                            <label id="labelMauvaiseReponse" hidden style={{color: 'darkred', fontWeight: "bold"}}>Mauvaise réponse !</label>
                                         </div>
                                     </>
                                 )}

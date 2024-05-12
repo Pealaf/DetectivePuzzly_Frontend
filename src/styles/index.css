@@ -115,6 +115,9 @@ body{
 
 .bouton:disabled {
     cursor: auto;
+    opacity: 0.5;
+    pointer-events: none;
+    filter: grayscale(100%);
 }
 
 .bouton:active {
