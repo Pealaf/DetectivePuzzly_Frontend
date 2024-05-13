@@ -1,7 +1,7 @@
 import Button from "../../components/Button";
 import {Navigate, Route, useNavigate, useParams} from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import {checkAuthentification} from "../../utils/utilsFunctions";
+import {checkAuthentification, redirectToLogInPage} from "../../utils/utilsFunctions";
 import Header from "../../components/Header";
 
 function PageEnigme() {
@@ -34,9 +34,7 @@ function PageEnigme() {
 
             if (!response.ok) {
                 if (response.status === 401) {
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('currentUser');
-                    navigate('/profil');
+                    redirectToLogInPage();
                 } else {
                     console.error('Erreur HTTP, statut : ' + response.status);
                     throw new Error('Erreur HTTP');
@@ -94,9 +92,7 @@ function PageEnigme() {
 
             if (!response.ok) {
                 if (response.status === 401) {
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('currentUser');
-                    navigate('/profil');
+                    redirectToLogInPage();
                 } else {
                     console.error('Erreur HTTP, statut : ' + response.status);
                     throw new Error('Erreur HTTP');
