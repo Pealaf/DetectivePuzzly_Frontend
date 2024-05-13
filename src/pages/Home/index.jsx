@@ -62,11 +62,9 @@ function Home() {
     } else {
         return (
             <div className="divPrincipale">
-                <header>
-                    <Header/>
-                </header>
+                <Header/>
                 <div className="divContent">
-                    <div className="divConnexion">
+                    <div className="divViolette">
                         {loading ? (
                             <p>Chargement en cours...</p>
                         ) : (

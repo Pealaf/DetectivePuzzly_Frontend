@@ -1,0 +1,20 @@
+.input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 1px solid var(--couleur-beige);
+    background-color: transparent;
+    outline: none;
+    color: var(--couleur-beige);
+    caret-color: var(--couleur-beige);
+}
+
+.input::placeholder {
+    color: var(--couleur-beige);
+    padding-left: 5px;
+}
+
+.input:focus::placeholder, .input:focus::placeholder {
+    opacity: 0.5;
+    filter: grayscale(100%);
+}

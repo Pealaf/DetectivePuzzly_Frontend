@@ -6,6 +6,11 @@ import Profil from './pages/Profil/';
 import NouveauProfil from './pages/NouveauProfil/';
 import Enigme from './pages/Enigme/';
 import './styles/index.css';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+
+library.add(fas, faTwitter, faFontAwesome)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

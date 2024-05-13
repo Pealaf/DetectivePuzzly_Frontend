@@ -72,19 +72,24 @@ function NouveauProfil() {
     } else {
         return (
             <div className="divContent">
-                <div className="divConnexion">
-                    <h1>Création du profil</h1>
+                <div className="divViolette ">
+                    <h1>Créer un compte</h1>
                     <div>
-                        <label id="labelErreur" hidden style={{color: 'red', fontWeight: "bold"}}></label>
-                        <Input type="text" name="login" label="Login" value={login} setValue={setLogin}/>
-                        <Input type="password" name="password" label="Mot de passe" value={password}
+                        <label id="labelErreur" hidden style={{color: 'darkred', fontWeight: "bold"}}></label>
+                        <br/>
+                        <Input type="text" name="login" placeholder="Login" value={login} setValue={setLogin}/>
+                        <br/>
+                        <Input type="password" name="password" placeholder="Mot de passe" value={password}
                                setValue={setPassword}/>
-                        <Input type="password" name="confirmationPassword" label={"Confirmation du mot de passe"}
+                        <br/>
+                        <Input type="password" name="confirmationPassword" placeholder="Confirmation du mot de passe"
                                value={confirmationPassword} setValue={setConfirmationPassword}/>
+                        <br/>
                         <br/>
                         <Button intitule="Créer mon compte" onClick={creationCompte}/>
                         <br/>
-                        <Link to="/profil">Compte déjà existant</Link>
+                        <br/>
+                        <Link className='lien' to="/profil">Compte déjà existant</Link>
                     </div>
                 </div>
             </div>

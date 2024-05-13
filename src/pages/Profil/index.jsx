@@ -102,18 +102,22 @@ function Profil() {
     } else {
         return (
             <div className="divContent">
-                <div className="divConnexion">
-                    <h1>Connexion</h1>
+                <div className="divViolette">
+                    <h1>Bienvenue</h1>
                     <div>
-                        <label id="labelIdentifiantsIncorrects" hidden style={{color: 'red', fontWeight: "bold"}}>Identifiants
+                        <label id="labelIdentifiantsIncorrects" hidden style={{color: 'darkred', fontWeight: "bold"}}>Identifiants
                             incorrects !</label>
-                        <Input type="text" name="login" label="Login" value={login} setValue={setLogin}/>
-                        <Input type="password" name="password" label="Mot de passe" value={password}
+                        <br/>
+                        <Input type="text" name="login" placeholder="Login" value={login} setValue={setLogin}/>
+                        <br/>
+                        <Input type="password" name="password" placeholder="Mot de passe" value={password}
                                setValue={setPassword}/>
                         <br/>
-                        <Button intitule="Enregistrer" onClick={connexion}/>
                         <br/>
-                        <Link to="/nouveauProfil">Nouveau compte</Link>
+                        <Button intitule="Continuer" onClick={connexion}/>
+                        <br/>
+                        <br/>
+                        <Link className='lien' to="/nouveauProfil">Nouveau compte</Link>
                     </div>
                 </div>
             </div>

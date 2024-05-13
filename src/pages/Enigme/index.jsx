@@ -1,5 +1,5 @@
 import Button from "../../components/Button";
-import {Navigate, Route, useNavigate, useParams} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import {checkAuthentification, resetLocalStorage} from "../../utils/utilsFunctions";
 import Header from "../../components/Header";
@@ -119,12 +119,9 @@ function PageEnigme() {
     } else {
         return (
             <div className="divPrincipale">
-                <header>
-                    <Header/>
-                </header>
-
+                <Header/>
                 <div className="divContent">
-                    <div className="divConnexion">
+                    <div className="divViolette">
                         {enigmeInProgress ? (
                             <>
                                 {loading ? (
@@ -134,6 +131,7 @@ function PageEnigme() {
                                         {enigme && (
                                             <>
                                                 <h2>{enigme.intitule}</h2>
+                                                <br/>
                                                 <div id="divBoutons">
                                                     <div className="divLigneBoutons">
                                                         <Button intitule={enigme["reponse_a"]} classe="boutonReponse" onClick={() => repondre('a')} disabled={buttonStates.a}/>
