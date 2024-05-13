@@ -1,7 +1,3 @@
-import {useNavigate} from "react-router-dom";
-
-const navigate = useNavigate();
-
 /**
  * Méthode permettant de vérifier si l'utilisateur est authentifié
  * @returns {boolean}
@@ -11,10 +7,9 @@ export function checkAuthentification() {
 }
 
 /**
- * Méthode permettant de rediriger vers la page d'accueil en cas d'erreur 401
+ * Méthode permettant d'effacer tout le contenu du local storage
  */
-export function redirectToLogInPage() {
+export function resetLocalStorage() {
     localStorage.removeItem('token');
     localStorage.removeItem('currentUser');
-    navigate('/profil');
 }
