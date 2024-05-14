@@ -23,7 +23,7 @@ function Inscription() {
                         "password": password
                     };
 
-                    await fetch("http://localhost:8000/api/users", {
+                    await fetch(localStorage.getItem("urlApi") + "api/users", {
                         method: "POST",
                         mode: "cors",
                         headers: {
@@ -99,7 +99,7 @@ function Inscription() {
 
 async function checkLogin (login){
     let result;
-    await fetch("http://localhost:8000/api/users/login/"+login, {
+    await fetch(localStorage.getItem("urlApi") + "api/users/login/"+login, {
         method: "GET",
         mode: "cors",
         headers: {

@@ -23,7 +23,7 @@ function PageEnigme() {
         let token = localStorage.getItem("token");
 
         try {
-            const response = await fetch("http://localhost:8000/api/enigmes/generate/" + idCurrentUser, {
+            const response = await fetch(localStorage.getItem("urlApi") + "api/enigmes/generate/" + idCurrentUser, {
                 method: "GET",
                 mode: "cors",
                 headers: {
@@ -81,7 +81,7 @@ function PageEnigme() {
         let token = localStorage.getItem("token");
 
         try {
-            const response = await fetch("http://localhost:8000/api/enigmes/" + enigme.id, {
+            const response = await fetch(localStorage.getItem("urlApi") + "api/enigmes/" + enigme.id, {
                 method: "PUT",
                 mode: "cors",
                 headers: {

@@ -20,7 +20,7 @@ function Home() {
         let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
         try {
-            const response = await fetch("http://localhost:8000/api/enigmes/count/" + currentUser.id, {
+            const response = await fetch(localStorage.getItem("urlApi") + "api/enigmes/count/" + currentUser.id, {
                 method: "GET",
                 mode: "cors",
                 headers: {

@@ -20,7 +20,7 @@ function Statistiques() {
         let token = localStorage.getItem("token");
 
         try {
-            const response = await fetch("http://localhost:8000/api/users/get/top", {
+            const response = await fetch(localStorage.getItem("urlApi") + "api/users/get/top", {
                 method: "GET",
                 mode: "cors",
                 headers: {

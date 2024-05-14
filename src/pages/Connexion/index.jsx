@@ -22,7 +22,7 @@ function Connexion() {
             "password": password
         };
 
-        await fetch("http://localhost:8000/api/login_check", {
+        await fetch(localStorage.getItem("urlApi") + "api/login_check", {
             method: "POST",
             mode: "cors",
             headers: {
@@ -67,7 +67,7 @@ function Connexion() {
         const decodedToken = jwtDecode(token);
 
         // Afficher les données décodées
-        await fetch("http://localhost:8000/api/users/login/" + decodedToken["username"], {
+        await fetch(localStorage.getItem("urlApi") + "api/users/login/" + decodedToken["username"], {
             method: "GET",
             mode: "cors",
             headers: {
