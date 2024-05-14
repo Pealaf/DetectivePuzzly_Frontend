@@ -10,6 +10,7 @@ import './styles/index.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+import { Analytics } from "@vercel/analytics/react";
 
 library.add(fas, faTwitter, faFontAwesome)
 
@@ -19,6 +20,7 @@ localStorage.setItem('urlApi', 'https://api.detectivepuzzly.xyz/');
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Router>
+        <Analytics />
         <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/connexion" element={<Connexion />} />
