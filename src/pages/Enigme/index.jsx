@@ -35,7 +35,7 @@ function PageEnigme() {
             if (!response.ok) {
                 if (response.status === 401) {
                     resetLocalStorage();
-                    navigate('/profil');
+                    navigate('/connexion');
                 } else {
                     console.error('Erreur HTTP, statut : ' + response.status);
                     throw new Error('Erreur HTTP');
@@ -94,7 +94,7 @@ function PageEnigme() {
             if (!response.ok) {
                 if (response.status === 401) {
                     resetLocalStorage();
-                    navigate('/profil');
+                    navigate('/connexion');
                 } else {
                     console.error('Erreur HTTP, statut : ' + response.status);
                     throw new Error('Erreur HTTP');
@@ -115,7 +115,7 @@ function PageEnigme() {
 
     // Vérification de la connexion
     if(!checkAuthentification()) {
-        return <Navigate to="/profil" replace={true} />;
+        return <Navigate to="/connexion" replace={true} />;
     } else {
         return (
             <div className="divPrincipale">

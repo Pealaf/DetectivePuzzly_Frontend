@@ -10,7 +10,7 @@ function Header() {
 
     const deconnexion = () => {
         resetLocalStorage();
-        navigate('/profil');
+        navigate('/connexion');
     };
 
     // Liens à ajouter par la suite

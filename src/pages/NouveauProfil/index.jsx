@@ -46,7 +46,7 @@ function NouveauProfil() {
                     }).then((jsonResponse) => {
                         if (jsonResponse.id) {
                             localStorage.setItem("nouveauCompte", "true");
-                            navigate('/profil');
+                            navigate('/connexion');
                         }
                     }).catch(error => {
                         // Gère les erreurs
@@ -89,7 +89,7 @@ function NouveauProfil() {
                         <Button intitule="Créer mon compte" onClick={creationCompte}/>
                         <br/>
                         <br/>
-                        <Link className='lien' to="/profil">Compte déjà existant</Link>
+                        <Link className='lien' to="/connexion">Compte déjà existant</Link>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@ import {Link, Navigate, useNavigate} from 'react-router-dom';
 import {jwtDecode} from "jwt-decode";
 import {checkAuthentification} from "../../utils/utilsFunctions";
 
-function Profil() {
+function Connexion() {
 
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
@@ -131,4 +131,4 @@ function Profil() {
     }
 }
 
-export default Profil;
+export default Connexion;
