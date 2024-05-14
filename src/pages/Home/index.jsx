@@ -42,8 +42,11 @@ function Home() {
             const data = await response.json();
 
             data["login"] = currentUser.login;
-            data["pourcentageReussite"] = Math.round(data["nombreEnigmesResolues"]*100/data["nombreEnigmes"]);
-
+            var pourcentageReussite = 0;
+            if (data["nombreEnigmes"] !== 0) {
+                pourcentageReussite = Math.round(data["nombreEnigmesResolues"]*100/data["nombreEnigmes"]);
+            }
+            data["pourcentageReussite"] = pourcentageReussite;
             setData(data);
         } catch (error) {
             console.error('Une erreur est survenue :', error);
