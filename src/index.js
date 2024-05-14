@@ -14,7 +14,7 @@ import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, faTwitter, faFontAwesome)
 
 // Stockage de l'url de l'api
-localStorage.setItem('urlApi', 'http://localhost:8000/');
+localStorage.setItem('urlApi', 'https://api.detectivepuzzly.xyz/');
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
