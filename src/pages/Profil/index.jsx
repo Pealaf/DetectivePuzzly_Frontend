@@ -10,6 +10,11 @@ function Profil() {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const affichageMessageNouveauCompte = localStorage.getItem("nouveauCompte") === "true";
+
+    if(affichageMessageNouveauCompte) {
+        localStorage.removeItem("nouveauCompte");
+    }
 
     const connexion = async () => {
         let donnees = {
@@ -107,6 +112,7 @@ function Profil() {
                     <div>
                         <label id="labelIdentifiantsIncorrects" hidden style={{color: 'darkred', fontWeight: "bold"}}>Identifiants
                             incorrects !</label>
+                        <label id="labelNouveauCompte" hidden={!affichageMessageNouveauCompte} style={{color: 'lightgreen', fontWeight: "bold"}}>Votre compte bien été créé.<br/>Vous pouvez maintenant vous connecter !</label>
                         <br/>
                         <Input type="text" name="login" placeholder="Login" value={login} setValue={setLogin}/>
                         <br/>

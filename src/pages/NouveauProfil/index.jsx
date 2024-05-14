@@ -45,7 +45,7 @@ function NouveauProfil() {
                         return response.json();
                     }).then((jsonResponse) => {
                         if (jsonResponse.id) {
-                            window.alert("Votre compte a bien été créé !");
+                            localStorage.setItem("nouveauCompte", "true");
                             navigate('/profil');
                         }
                     }).catch(error => {
@@ -107,7 +107,13 @@ async function checkLogin (login){
         },
     })
     .then(response => {
-        result = response.ok;
+        // Vérifie si la requête a réussi
+        if (!response.ok) {
+            // Gérer d'autres erreurs HTTP
+            console.error('Erreur HTTP, statut : ' + response.status);
+            throw new Error('Erreur HTTP');
+        }
+        result = response.status === 200;
     })
     .catch(error => {
         // Gère les erreurs
