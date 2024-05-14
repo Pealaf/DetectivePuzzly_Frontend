@@ -123,7 +123,7 @@ function Connexion() {
                         <Button intitule="Continuer" onClick={connexion}/>
                         <br/>
                         <br/>
-                        <Link className='lien' to="/nouveauProfil">Nouveau compte</Link>
+                        <Link className='lien' to="/inscription">Nouveau compte</Link>
                     </div>
                 </div>
             </div>

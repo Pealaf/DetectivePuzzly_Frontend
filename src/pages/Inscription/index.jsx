@@ -4,7 +4,7 @@ import Button from "../../components/Button";
 import {Link, Navigate, useNavigate} from 'react-router-dom';
 import {checkAuthentification} from "../../utils/utilsFunctions";
 
-function NouveauProfil() {
+function Inscription() {
 
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
@@ -122,4 +122,4 @@ async function checkLogin (login){
     return result;
 }
 
-export default NouveauProfil;
+export default Inscription;

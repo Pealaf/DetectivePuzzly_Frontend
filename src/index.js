@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home/';
 import Connexion from './pages/Connexion/';
-import NouveauProfil from './pages/NouveauProfil/';
+import Inscription from './pages/Inscription/';
 import Enigme from './pages/Enigme/';
 import './styles/index.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -18,7 +18,7 @@ root.render(
         <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/connexion" element={<Connexion />} />
-            <Route path="/nouveauProfil" element={<NouveauProfil />} />
+            <Route path="/inscription" element={<Inscription />} />
             <Route path="/enigme" element={<Enigme />} />
             <Route path="/*" element={<Home />}/>
         </Routes>
