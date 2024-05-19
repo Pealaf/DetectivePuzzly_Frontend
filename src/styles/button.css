@@ -23,7 +23,6 @@
     user-select: none;
     -webkit-user-select: none;
     vertical-align: middle;
-    white-space: nowrap;
 }
 
 .bouton:after {
