@@ -75,3 +75,8 @@ body {
     filter: sepia(2.0);
     -webkit-filter: sepia(2.0);
 }
+
+hr {
+    width: 100%;
+    border-color: var(--couleur-beige);
+}

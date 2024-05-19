@@ -6,6 +6,7 @@ import Connexion from './pages/Connexion/';
 import Inscription from './pages/Inscription/';
 import Enigme from './pages/Enigme/';
 import Statistiques from "./pages/Statistiques";
+import MonCompte from "./pages/MonCompte";
 import './styles/index.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -27,6 +28,7 @@ root.render(
             <Route path="/inscription" element={<Inscription />} />
             <Route path="/enigme" element={<Enigme />} />
             <Route path="/statistiques" element={<Statistiques />} />
+            <Route path="/moncompte" element={<MonCompte />} />
             <Route path="/*" element={<Home />}/>
         </Routes>
     </Router>

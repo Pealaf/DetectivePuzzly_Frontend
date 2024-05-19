@@ -13,9 +13,6 @@ function Header() {
         navigate('/connexion');
     };
 
-    // Liens à ajouter par la suite
-    // <Link to="/profil" className='headerLien'><FontAwesomeIcon icon="fa-solid fa-user" /></Link>
-
     return (
         <header>
             <nav className='header'>
@@ -24,7 +21,8 @@ function Header() {
                 </Link>
                 <Link to="/home" className='headerLien'><FontAwesomeIcon icon="fa-solid fa-house" /></Link>
                 <Link to="/enigme" className='headerLien'><FontAwesomeIcon icon="fa-solid fa-play" /></Link>
-                <Link to={"/statistiques"} className="headerLien"><FontAwesomeIcon icon="fa-solid fa-chart-simple" /></Link>
+                <Link to="/statistiques" className="headerLien"><FontAwesomeIcon icon="fa-solid fa-chart-simple" /></Link>
+                <Link to="/moncompte" className='headerLien'><FontAwesomeIcon icon="fa-solid fa-user" /></Link>
                 <button onClick={deconnexion} className="headerLien headerBouton"><FontAwesomeIcon icon="fa-solid fa-right-from-bracket" /></button>
             </nav>
         </header>
