@@ -18,11 +18,14 @@ function PageEnigme() {
         d: false
     });
 
+    let nbTentativeRequetes = 0;
+
     const genererEnigme = async () => {
         let idCurrentUser = JSON.parse(localStorage.getItem("currentUser"))["id"];
         let token = localStorage.getItem("token");
 
         try {
+            nbTentativeRequetes++;
             const response = await fetch(localStorage.getItem("urlApi") + "api/enigmes/generate/" + idCurrentUser, {
                 method: "GET",
                 mode: "cors",
@@ -40,14 +43,24 @@ function PageEnigme() {
                     console.error('Erreur HTTP, statut : ' + response.status);
                     throw new Error('Erreur HTTP');
                 }
+            } else {
+                if (response.status === 204) {
+                    // Regénération d'une énigme
+                    await genererEnigme();
+                } else {
+                    const jsonResponse = await response.json();
+                    setEnigme(jsonResponse);
+                    // À la fin de la requête, on arrête le chargement
+                    setLoading(false);
+                    // Réinitialisation du nombre de tentatives
+                    nbTentativeRequetes = 0;
+                }
             }
-
-            const jsonResponse = await response.json();
-            setEnigme(jsonResponse);
         } catch (error) {
             console.error('Une erreur est survenue :', error);
-        } finally {
-            setLoading(false); // À la fin de la requête, on arrête le chargement
+            if (nbTentativeRequetes <= 3) {
+                await genererEnigme();
+            }
         }
     }
 
