@@ -126,7 +126,8 @@ function Connexion() {
                         <Link className='lien' to="/inscription">Nouveau compte</Link>
                         <br/>
                         <br/>
-                        <Link className='lien' to="https://www.instagram.com/detectivepuzzly/"><i className="fa-brands fa-instagram"></i></Link>
+                        <Link className='lien' to="https://www.facebook.com/profile.php?id=61559805400882"><i className="fa-brands fa-facebook"></i></Link>
+                        {/*<Link className='lien' to="https://www.instagram.com/detectivepuzzly/"><i className="fa-brands fa-instagram"></i></Link>*/}
                         <Link className='lien' to="https://www.linkedin.com/in/d%C3%A9tective-puzzly-9b6b41309/"><i className="fa-brands fa-linkedin"></i></Link>
                     </div>
                 </div>
